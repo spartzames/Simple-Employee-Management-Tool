@@ -1,6 +1,7 @@
 package com.dursuneryilmaz.employeemanagement.service;
 
 import com.dursuneryilmaz.employeemanagement.domain.Employee;
+import com.dursuneryilmaz.employeemanagement.exception.EmployeeNotFoundException;
 import com.dursuneryilmaz.employeemanagement.repository.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,11 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void delete(Employee employee) {
-         employeeRepository.delete(employee);
+        employeeRepository.delete(employee);
+    }
+
+    @Override
+    public Employee findById(Long id) {
+        return employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id:" + id));
     }
 }

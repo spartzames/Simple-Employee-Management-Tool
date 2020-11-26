@@ -1,8 +1,10 @@
 package com.dursuneryilmaz.employeemanagement.controller;
 
 import com.dursuneryilmaz.employeemanagement.domain.Employee;
+import com.dursuneryilmaz.employeemanagement.exception.EmployeeNotFoundException;
 import com.dursuneryilmaz.employeemanagement.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,5 +27,19 @@ public class EmployeeController {
     @PostMapping("/employees")
     public Employee createEmployee(@RequestBody Employee employee){
         return employeeService.add(employee);
+    }
+
+    //get employee by id
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getById(@PathVariable Long id){
+        Employee employee = employeeService.findById(id);
+        return ResponseEntity.ok(employee);
+    }
+
+    //update employee
+    @PutMapping("/employees")
+    public ResponseEntity<Employee> update(@RequestBody Employee employee){
+       Employee employeeUpdated =  employeeService.update(employee);
+       return ResponseEntity.ok(employeeUpdated);
     }
 }
