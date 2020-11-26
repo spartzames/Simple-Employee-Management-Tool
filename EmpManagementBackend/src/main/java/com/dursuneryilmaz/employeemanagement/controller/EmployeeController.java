@@ -3,10 +3,7 @@ package com.dursuneryilmaz.employeemanagement.controller;
 import com.dursuneryilmaz.employeemanagement.domain.Employee;
 import com.dursuneryilmaz.employeemanagement.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +19,11 @@ public class EmployeeController {
     @GetMapping("/employees")
     public List<Employee> getAll(){
         return employeeService.getAll();
+    }
+
+    //add employee
+    @PostMapping("/employees")
+    public Employee createEmployee(@RequestBody Employee employee){
+        return employeeService.add(employee);
     }
 }
