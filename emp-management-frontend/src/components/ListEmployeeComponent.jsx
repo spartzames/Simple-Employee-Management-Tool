@@ -7,20 +7,34 @@ class ListEmployeeComponent extends Component {
     this.state = {
       employees: [],
     };
+    // bind methods
     this.addEmployee = this.addEmployee.bind(this);
     this.editEmployee = this.editEmployee.bind(this);
+    this.deleteEmployeeById = this.deleteEmployeeById.bind(this);
   }
-
+  // route to update employee page with pathvariable id
   editEmployee(id) {
     this.props.history.push(`/update-employee/${id}`);
   }
+  // delete employee by id
+  deleteEmployeeById(id) {
+    EmployeeService.deleteById(id).then((res) => {
+      //filter employees list to reduce api call
+      this.setState({
+        employees: this.state.employees.filter(
+          (employee) => employee.id !== id
+        ),
+      });
+    });
+  }
 
+  // fill employees array on componenet mount
   componentDidMount() {
     EmployeeService.getEmployees().then((res) => {
       this.setState({ employees: res.data });
     });
   }
-
+  // route to add amployee page
   addEmployee() {
     this.props.history.push("/add-employee");
   }
@@ -64,7 +78,7 @@ class ListEmployeeComponent extends Component {
                       Update
                     </button>
                     <button
-                      onClick={() => this.delete(employee.id)}
+                      onClick={() => this.deleteEmployeeById(employee.id)}
                       className="btn btn-danger"
                       style={{ marginLeft: "10px" }}
                     >

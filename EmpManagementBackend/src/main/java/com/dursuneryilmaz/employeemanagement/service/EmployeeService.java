@@ -41,4 +41,10 @@ public class EmployeeService implements IEmployeeService {
     public Employee findById(Long id) {
         return employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id:" + id));
     }
+
+    @Override
+    public void deleteById(Long id) {
+        employeeRepository.deleteById(id);
+    }
+
 }

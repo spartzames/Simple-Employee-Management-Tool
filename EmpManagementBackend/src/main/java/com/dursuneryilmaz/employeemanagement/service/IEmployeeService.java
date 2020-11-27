@@ -15,4 +15,5 @@ public interface IEmployeeService {
 
     Employee findById(Long id);
 
+    void deleteById(Long id);
 }
