@@ -11,10 +11,15 @@ class ListEmployeeComponent extends Component {
     this.addEmployee = this.addEmployee.bind(this);
     this.editEmployee = this.editEmployee.bind(this);
     this.deleteEmployeeById = this.deleteEmployeeById.bind(this);
+    this.viewEmployee = this.viewEmployee.bind(this);
   }
   // route to update employee page with pathvariable id
   editEmployee(id) {
     this.props.history.push(`/update-employee/${id}`);
+  }
+  // route to view employee page
+  viewEmployee(id) {
+    this.props.history.push(`/view-employee/${id}`);
   }
   // delete employee by id
   deleteEmployeeById(id) {
@@ -83,6 +88,14 @@ class ListEmployeeComponent extends Component {
                       style={{ marginLeft: "10px" }}
                     >
                       Delete
+                    </button>
+
+                    <button
+                      onClick={() => this.viewEmployee(employee.id)}
+                      className="btn btn-secondary"
+                      style={{ marginLeft: "10px" }}
+                    >
+                      View
                     </button>
                   </td>
                 </tr>

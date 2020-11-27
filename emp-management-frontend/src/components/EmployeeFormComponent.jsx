@@ -75,13 +75,13 @@ export default class EmployeeFormComponent extends Component {
     if (this.state.id === undefined) {
       return (
         <div>
-          <h3 className="text-center">Add Employee</h3>
+          <h2 className="text-center">Add Employee</h2>
         </div>
       );
     } else {
       return (
         <div>
-          <h3 className="text-center">Update Employee</h3>
+          <h2 className="text-center">Update Employee</h2>
         </div>
       );
     }
