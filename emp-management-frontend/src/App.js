@@ -3,7 +3,7 @@ import FooterComponent from "./components/FooterComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import ListEmployeeComponent from "./components/ListEmployeeComponent";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import CreateEmployeeComponent from "./components/CreateEmployeeComponent";
+import EmployeeFormComponent from "./components/EmployeeFormComponent";
 
 function App() {
   return (
@@ -16,7 +16,11 @@ function App() {
             <Route path="/employees" component={ListEmployeeComponent}></Route>
             <Route
               path="/add-employee"
-              component={CreateEmployeeComponent}
+              component={EmployeeFormComponent}
+            ></Route>
+            <Route
+              path="/update-employee/:id"
+              component={EmployeeFormComponent}
             ></Route>
           </Switch>
         </div>

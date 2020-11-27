@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import EmployeeService from "../services/EmployeeService";
 
-export default class CreateEmployeeComponent extends Component {
+export default class EmployeeFormComponent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: this.props.match.params.id,
       firstName: "",
       lastName: "",
       emailAddress: "",
@@ -17,18 +18,41 @@ export default class CreateEmployeeComponent extends Component {
     this.saveEmployee = this.saveEmployee.bind(this);
     this.cancelSave = this.cancelSave.bind(this);
   }
-
+  // get employee by id to update
+  componentDidMount() {
+    if (this.state.id === undefined) {
+      return;
+    } else {
+      EmployeeService.getEmployeeById(this.state.id).then((res) => {
+        let employee = res.data;
+        console.log(JSON.stringify(employee));
+        this.setState({
+          firstName: employee.firstName,
+          lastName: employee.lastName,
+          emailAddress: employee.emailAddress,
+        });
+      });
+    }
+  }
+  // save or update employee
   saveEmployee = (e) => {
     e.preventDefault();
     let employee = {
+      id: this.state.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       emailAddress: this.state.emailAddress,
     };
     console.log("Employe:" + JSON.stringify(employee));
-    EmployeeService.addEmployee(employee).then((res) => {
-      this.props.history.push("/employees");
-    });
+    if (this.state.id === undefined) {
+      EmployeeService.addEmployee(employee).then((res) => {
+        this.props.history.push("/employees");
+      });
+    } else {
+      EmployeeService.updateEmployee(employee).then((res) => {
+        this.props.history.push("/employees");
+      });
+    }
   };
 
   cancelSave() {
@@ -47,13 +71,32 @@ export default class CreateEmployeeComponent extends Component {
     this.setState({ emailAddress: event.target.value });
   }
 
+  getTitle() {
+    if (this.state.id === undefined) {
+      return (
+        <div>
+          <h3 className="text-center">Add Employee</h3>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h3 className="text-center">Update Employee</h3>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div>
         <div className="container">
           <div className="row">
-            <div className="card col-md-6 offset-md-3 offset-md-3">
-              <h3 className="text-center">Add Employee</h3>
+            <div
+              className="card col-md-6 offset-md-3 offset-md-3"
+              style={{ marginTop: "10px" }}
+            >
+              {this.getTitle()}
               <form>
                 <div className="form-group">
                   <label>First Name:</label>
