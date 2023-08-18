@@ -1,4 +1,4 @@
-package com.dursuneryilmaz.employeemanagement;
+package com.koreanair.kthong.employeemanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

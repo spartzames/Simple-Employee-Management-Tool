@@ -1,8 +1,8 @@
-package com.dursuneryilmaz.employeemanagement.service;
+package com.koreanair.kthong.employeemanagement.service;
 
-import com.dursuneryilmaz.employeemanagement.domain.Employee;
-import com.dursuneryilmaz.employeemanagement.exception.EmployeeNotFoundException;
-import com.dursuneryilmaz.employeemanagement.repository.IEmployeeRepository;
+import com.koreanair.kthong.employeemanagement.domain.Employee;
+import com.koreanair.kthong.employeemanagement.exception.EmployeeNotFoundException;
+import com.koreanair.kthong.employeemanagement.repository.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

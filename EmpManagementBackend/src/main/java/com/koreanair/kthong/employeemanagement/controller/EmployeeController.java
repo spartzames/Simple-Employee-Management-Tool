@@ -1,10 +1,8 @@
-package com.dursuneryilmaz.employeemanagement.controller;
+package com.koreanair.kthong.employeemanagement.controller;
 
-import com.dursuneryilmaz.employeemanagement.domain.Employee;
-import com.dursuneryilmaz.employeemanagement.exception.EmployeeNotFoundException;
-import com.dursuneryilmaz.employeemanagement.service.IEmployeeService;
+import com.koreanair.kthong.employeemanagement.domain.Employee;
+import com.koreanair.kthong.employeemanagement.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

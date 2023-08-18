@@ -1,6 +1,6 @@
-package com.dursuneryilmaz.employeemanagement.repository;
+package com.koreanair.kthong.employeemanagement.repository;
 
-import com.dursuneryilmaz.employeemanagement.domain.Employee;
+import com.koreanair.kthong.employeemanagement.domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

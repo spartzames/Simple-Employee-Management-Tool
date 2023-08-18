@@ -1,6 +1,6 @@
-package com.dursuneryilmaz.employeemanagement.service;
+package com.koreanair.kthong.employeemanagement.service;
 
-import com.dursuneryilmaz.employeemanagement.domain.Employee;
+import com.koreanair.kthong.employeemanagement.domain.Employee;
 
 import java.util.List;
 

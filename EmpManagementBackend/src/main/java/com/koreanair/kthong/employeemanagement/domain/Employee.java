@@ -1,4 +1,4 @@
-package com.dursuneryilmaz.employeemanagement.domain;
+package com.koreanair.kthong.employeemanagement.domain;
 
 import javax.persistence.*;
 

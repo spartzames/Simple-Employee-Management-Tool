@@ -1,4 +1,4 @@
-package com.dursuneryilmaz.employeemanagement.exception;
+package com.koreanair.kthong.employeemanagement.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
